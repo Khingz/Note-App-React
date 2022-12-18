@@ -1,3 +1,11 @@
+:root {
+  --purple: #663e65;
+  --white: #fefefe;
+  --pink: #ef5f6a;
+  --cyan: #3c999c;
+  --yellow:#f38e38;
+}
+
 body {
   margin: 0;
   padding: 0;
