@@ -1,0 +1,54 @@
+.navbar__container {
+    width: 100%;
+    background: var(--cyan);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.brand__name a {
+    font-size: 1.1rem;
+    font-weight: bolder;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.brand__name span {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-left: -0.2rem;
+    color: var(--pink);
+}
+
+.nav__user {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+}
+
+.nav__username {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
+.nav__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--purple);
+    text-align: center;
+    color: var(--white);
+    margin-right: 0.3rem;
+    font-weight: bold;
+}
+
+.nav__user button {
+    background: var(--purple);
+    color: white;
+    border: solid 1px var(--purple);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+}
