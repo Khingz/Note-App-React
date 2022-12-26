@@ -11,7 +11,6 @@
 
 .home__left {
     width: 45%;
-    /* border: solid 1px var(--cyan); */
 }
 
 .home__left img {
@@ -20,17 +19,20 @@
 
 .home__right {
     width: 30%;
+    padding: 0.5rem;
+    box-sizing: border-box;
 }
 
 .home__right p {
     text-transform: uppercase;
     font-size: 2rem;
     font-weight: 200;
+    margin-top: -1rem;
 }
 
 .home__right span {
     display: block;
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bold;
 }
 
@@ -51,6 +53,7 @@
 @media screen and (max-width: 800px) {
     .home__container {
      flex-direction: column;
+     justify-content: start;
     }
 
     .home__left {

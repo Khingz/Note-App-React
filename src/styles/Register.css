@@ -1,0 +1,48 @@
+.register__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    margin-top: 4rem;
+
+}
+
+.register__container label {
+    display: block;
+    font-weight: 500;
+}
+
+.register__container form {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.register__container form input {
+    width: 100%;
+    height: 2.5rem;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+
+.register__container form input[type='submit'] {
+    background: var(--cyan);
+    border: none;
+    color: var(--white);
+    font-size: 1.1rem;
+}
+
+.register__login a {
+    margin-left: 0.3rem;
+}
+
+
+@media screen and (max-width: 800px) {
+    .register__container form {
+        width: 80%;
+    }
+}

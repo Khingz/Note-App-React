@@ -1,0 +1,23 @@
+.category__container {
+    background: var(--cyan);
+    color: var(--white);
+    border-radius: 8px;
+    width: 12rem;
+    padding: 0.5rem 1rem;
+}
+
+.category__count {
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+
+.category__title {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.category__hr {
+    border-top: solid 1px var(--white);
+    margin-bottom: 0.5rem;
+}

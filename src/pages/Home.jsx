@@ -17,7 +17,7 @@ const Home = () => {
         </p>
         <div className="home__login__signup">
           <div className="home__signup">
-            <Link to="/signin">
+            <Link to="/signup">
               <TfiLayoutLineSolid />
               SignUp
             </Link>

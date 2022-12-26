@@ -1,17 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Login.css'
 
 const Login = () => {
   return (
     <div className="login__container">
+      <h3 className="login__title">Hello, please login to continue</h3>
       <form>
-        <div className="username__container">
-          <label htmlFor="username">Username</label>
+        <div className="email__container">
+          <label htmlFor="email">Email</label>
           <input
             type="text"
-            name="username"
-            id="username"
-            placeholder="Enter your username"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
           />
         </div>
         <div className="passeord__container">
@@ -25,6 +27,12 @@ const Login = () => {
         </div>
         <input type="submit" value="Login" />
       </form>
+      <div className="login__register">
+        <span>
+          Don't have account? 
+          <Link to='/signup'>Register</Link>
+        </span>
+      </div>
     </div>
   );
 };
