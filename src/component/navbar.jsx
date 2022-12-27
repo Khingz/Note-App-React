@@ -7,13 +7,15 @@ const navbar = () => {
     <div className="navbar__container">
       <div className="brand__name">
         <Link to="/dashboard">
-          Kui<span>Note</span>
+          Kui<span>Notes</span>
         </Link>
       </div>
       <div className="nav__user">
         <div className="nav__username">
-          <div className="nav__avatar">A</div>
-          <p className="username">Alan</p>
+          <Link to='/profile'>
+            <div className="nav__avatar">A</div>
+            <p className="username">Alan</p>
+          </Link>
         </div>
         <button>Logout</button>
       </div>

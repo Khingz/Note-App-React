@@ -7,7 +7,7 @@
 }
 
 .brand__name a {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
     text-decoration: none;
     color: var(--white);
@@ -15,8 +15,8 @@
 
 .brand__name span {
     font-style: italic;
-    font-size: 1.2rem;
-    margin-left: -0.2rem;
+    font-size: 1.5rem;
+    margin-left: -0.3rem;
     color: var(--pink);
 }
 
@@ -27,11 +27,13 @@
     color: white;
 }
 
-.nav__username {
+.nav__username a {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 0.5rem;
+    text-decoration: none;
+    color: var(--white);
 }
 
 .nav__avatar {
