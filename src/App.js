@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import AddNote from './pages/AddNote';
 import Profile from './pages/Profile';
+import SingleNote from './pages/SingleNote';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signup" element={<Register />} />
           <Route path="/add-note" element={<AddNote />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/note/:noteId" element={<SingleNote />} />
         </Routes>
       </Router>
     </div>

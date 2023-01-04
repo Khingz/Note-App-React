@@ -38,6 +38,10 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+.dashboard__note__items a {
+    text-decoration: none;
+}
+
 .dashboard__note__items > div {
     align-self: center;
     justify-self: center;

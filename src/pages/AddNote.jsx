@@ -18,6 +18,15 @@ const AddNote = () => {
             <label htmlFor="">Note Content</label>
             <textarea name="note" id="note" cols="30" rows="10"></textarea>
           </div>
+          <div className="add__category">
+            <label for="category">Category</label>
+            <select name="category" id="category">
+              <option value="personal">Personal</option>
+              <option value="religious">Religious</option>
+              <option value="business">Business</option>
+              <option value="education">Education</option>
+            </select>
+          </div>
           <div className="add__cancel__note">
             <input type="submit" value="Add Note" />
             <Link to="/dashboard">Cancel</Link>

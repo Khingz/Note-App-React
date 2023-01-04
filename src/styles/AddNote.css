@@ -21,6 +21,16 @@ label {
     resize: none;
 }
 
+.add__category {
+    margin-bottom: 1rem;
+}
+
+.add__category select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.05rem;
+}
+
 .add__cancel__note {
     display: flex;
     justify-content: space-between;

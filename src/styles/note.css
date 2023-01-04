@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+.note__container .note__title {
+    text-transform: capitalize;
+}
+
 .note__category {
     width: 30px;
     height: 30px;
