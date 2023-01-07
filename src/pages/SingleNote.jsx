@@ -45,7 +45,7 @@ const SingleNote = () => {
         <p className="single__note__message">{note.message}</p>
         <div className="single__not__btn">
           <Link to="/dashboard">Back</Link>
-          <Link to="/update-note">Edit Note</Link>
+          <Link to={`/update-note/${noteId}`}>Edit Note</Link>
         </div>
       </div>
 

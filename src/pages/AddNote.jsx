@@ -19,7 +19,7 @@ const AddNote = () => {
             <textarea name="note" id="note" cols="30" rows="10"></textarea>
           </div>
           <div className="add__category">
-            <label for="category">Category</label>
+            <label htmlFor="category">Category</label>
             <select name="category" id="category">
               <option value="personal">Personal</option>
               <option value="religious">Religious</option>
