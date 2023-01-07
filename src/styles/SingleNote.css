@@ -1,0 +1,13 @@
+.top__line {
+    border: 1px solid var(--pink);
+    width: 40%;
+    margin-top: 3rem;
+}
+
+.bottom__line {
+    border: 1px solid var(--pink);
+    width: 40%;
+    margin-top: 3rem;
+    position: relative;
+    right: 0;
+}
