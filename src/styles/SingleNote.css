@@ -34,7 +34,7 @@
     align-items: center;
 }
 
-.single__not__btn a {
+.single__not__btn a, .single__not__btn button {
     margin-left: 0.5rem;
     text-decoration: none;
     color: var(--white);
@@ -44,6 +44,12 @@
 }
 
 .single__not__btn a:first-child {
+    background-color: var(--yellow);
+}
+
+.single__not__btn button {
+    padding: 0.6rem 1rem;
+    border: none;
     background-color: var(--pink);
 }
 
