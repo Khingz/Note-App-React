@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
@@ -7,8 +8,31 @@ import Dashboard from './pages/Dashboard';
 import AddNote from './pages/AddNote';
 import Profile from './pages/Profile';
 import SingleNote from './pages/SingleNote';
+import { NoteContext } from "../src/context/Context";
+
+//firebase imports
+import { db } from "../src/firebase-config";
+import { collection, getDocs } from "firebase/firestore";
+import { NOTE_ERROR, NOTE_SUCCESS } from "../src/context/actionTypes";
+
 
 function App() {
+  const { dispatch } = NoteContext();
+  useEffect(() => {
+    const notesCollectionRef = collection(db, "notes");
+    const getNotes = async () => {
+      try {
+        const data = await getDocs(notesCollectionRef);
+        const notes = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        dispatch({ type: NOTE_SUCCESS, payload: notes });
+      } catch (err) {
+        console.log(err);
+        dispatch({ type: NOTE_ERROR, payload: err });
+      }
+    };
+
+    getNotes();
+  }, [dispatch]);
   return (
     <div className="App">
       <Router>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Category from "../component/category";
 import Note from "../component/note";
 import "../styles/Dashboard.css";
@@ -6,28 +6,12 @@ import { BsPlusCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Navbar from "../component/navbar";
 import { NoteContext } from "../context/Context";
-import { db } from "../firebase-config";
-import { collection, getDocs } from "firebase/firestore";
-import { NOTE_ERROR, NOTE_SUCCESS } from "../context/actionTypes";
+
 
 const Dashboard = () => {
-  const { state, dispatch } = NoteContext();
+  const { state } = NoteContext();
   const { data, loading, err } = state.notes;
-  useEffect(() => {
-    const notesCollectionRef = collection(db, "notes");
-    const getNotes = async () => {
-      try {
-        const data = await getDocs(notesCollectionRef);
-        const notes = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        dispatch({ type: NOTE_SUCCESS, payload: notes });
-      } catch (err) {
-        console.log(err);
-        dispatch({ type: NOTE_ERROR, payload: err });
-      }
-    };
-
-    getNotes();
-  }, [dispatch]);
+ 
 
   //assign color depending on category
   const categoryColorPicker = (category) => {
@@ -57,7 +41,7 @@ const Dashboard = () => {
   }
 
   //render if error
-  if (Object.keys(err).length > 0) {
+  if ((Object.keys(err).length > 0) && (data.length < 0)) {
     return (
       <div className="dashboard__main">
         <Navbar />
