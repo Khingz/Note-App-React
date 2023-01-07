@@ -26,7 +26,6 @@ function App() {
         const notes = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
         dispatch({ type: NOTE_SUCCESS, payload: notes });
       } catch (err) {
-        console.log(err);
         dispatch({ type: NOTE_ERROR, payload: err });
       }
     };
