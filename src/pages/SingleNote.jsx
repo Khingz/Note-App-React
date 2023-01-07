@@ -1,9 +1,9 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { NoteContext } from '../context/Context';
-import Navbar from '../component/navbar';
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import { NoteContext } from "../context/Context";
+import Navbar from "../component/navbar";
 
-import '../styles/SingleNote.css'
+import "../styles/SingleNote.css";
 
 const SingleNote = () => {
   const { noteId } = useParams();
@@ -40,10 +40,14 @@ const SingleNote = () => {
     <div>
       <Navbar />
       <div className="top__line"></div>
-        <div className="single__note__container">
-          <h4 className='single__note__title'>{note.title}</h4>
-          <p className="single__note__message">{note.message}</p>
+      <div className="single__note__container">
+        <h4 className="single__note__title">{note.title}</h4>
+        <p className="single__note__message">{note.message}</p>
+        <div className="single__not__btn">
+          <Link to="/dashboard">Back</Link>
+          <Link to="/update-note">Edit Note</Link>
         </div>
+      </div>
 
       <div className="bottom__line"></div>
     </div>

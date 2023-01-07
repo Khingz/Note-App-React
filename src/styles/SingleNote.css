@@ -1,13 +1,49 @@
 .top__line {
-    border: 1px solid var(--pink);
+    border-top: 1px solid var(--cyan);
     width: 40%;
     margin-top: 3rem;
 }
 
 .bottom__line {
-    border: 1px solid var(--pink);
+    border-top: 1px solid var(--cyan);
     width: 40%;
-    margin-top: 3rem;
-    position: relative;
-    right: 0;
+    margin-left: 60%;
 }
+
+.single__note__container {
+    width: 90%;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.single__note__container h4 {
+    text-transform: capitalize;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.single__note__container p {
+    margin-top: -1rem;
+}
+
+.single__not__btn {
+    width: 100%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.single__not__btn a {
+    margin-left: 0.5rem;
+    text-decoration: none;
+    color: var(--white);
+    background-color: var(--cyan);
+    padding: 0.3rem 1rem;
+    border-radius: 8px;
+}
+
+.single__not__btn a:first-child {
+    background-color: var(--pink);
+}
+
