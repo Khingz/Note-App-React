@@ -14,6 +14,7 @@ import { NoteContext } from "../src/context/Context";
 import { db } from "../src/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { NOTE_ERROR, NOTE_SUCCESS } from "../src/context/actionTypes";
+import UpdateNote from "./pages/UpdateNote";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/add-note" element={<AddNote />} />
+          <Route path="/update-note/:noteId" element={<UpdateNote/>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/note/:noteId" element={<SingleNote />} />
         </Routes>
