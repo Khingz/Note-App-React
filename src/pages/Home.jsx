@@ -13,7 +13,7 @@ const Home = () => {
       </div>
       <div className="home__right">
         <p>
-          Make all <span>your</span> <span>things</span> <span>organized</span>
+          Make all <br /> <span>your</span> <span>things</span> <span>organized</span>
         </p>
         <div className="home__login__signup">
           <div className="home__signup">
