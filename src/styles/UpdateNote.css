@@ -3,7 +3,7 @@ label {
     font-weight: bold;
 }
 
-.add__note__container {
+.update__note__container {
     width: 50%;
     margin: 1rem auto;
 }
@@ -21,23 +21,23 @@ label {
     resize: none;
 }
 
-.add__category {
+.update__category {
     margin-bottom: 1rem;
 }
 
-.add__category select {
+.update__category select {
     width: 100%;
     padding: 0.5rem;
     font-size: 1.05rem;
 }
 
-.add__cancel__note {
+.update__cancel__note {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.add__cancel__note input, .add__cancel__note a {
+.update__cancel__note input, .update__cancel__note a {
     color: var(--white);
     border: none;
     padding: 0.5rem 1rem;
@@ -45,7 +45,7 @@ label {
     border-radius: 8px;
 }
 
-.add__cancel__note a {
+.update__cancel__note a {
     padding: 0.2rem 1.5rem;
     text-decoration: none;
     background-color: var(--pink);
@@ -53,7 +53,7 @@ label {
 
 
 @media screen and (max-width: 800px) {
-    .add__note__container {
+    .update__note__container {
         width: 90%;
     }
 }
