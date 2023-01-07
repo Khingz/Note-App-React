@@ -13,7 +13,6 @@ import { NOTE_ERROR, NOTE_SUCCESS } from "../context/actionTypes";
 const Dashboard = () => {
   const { state, dispatch } = NoteContext();
   const { data, loading, err } = state.notes;
-  console.log(state);
   useEffect(() => {
     const notesCollectionRef = collection(db, "notes");
     const getNotes = async () => {
@@ -23,9 +22,8 @@ const Dashboard = () => {
         dispatch({ type: NOTE_SUCCESS, payload: notes });
       } catch (err) {
         console.log(err);
-        dispatch({type: NOTE_ERROR, payload: err})
+        dispatch({ type: NOTE_ERROR, payload: err });
       }
-      
     };
 
     getNotes();
@@ -82,27 +80,36 @@ const Dashboard = () => {
         <p className="dashboard__user">
           Hello Alan, <span>Welcome</span>
         </p>
+        <hr />
         <div className="dashboard__category">
-          <h4>Categories</h4>
-          <div className="dashboard__category__items">
-            <Category category="home" count="23" />
-            <Category category="home" count="23" />
-            <Category category="home" count="23" />
-          </div>
+          {data.length === 0 ? null : (
+            <>
+              <h4>Categories</h4>
+              <div className="dashboard__category__items">
+                <Category category="home" count="23" />
+                <Category category="home" count="23" />
+                <Category category="home" count="23" />
+              </div>
+            </>
+          )}
         </div>
         <div className="dashboard__notes">
           <h4>Your Notes</h4>
           <div className="dashboard__note__items">
-            {data.map((note) => {
-              return (
-                <Link to={`/note/${note.id}`} key={note.id}>
-                  <Note
-                    title={note.title}
-                    categoryColor={categoryColorPicker(note.category)}
-                  />
-                </Link>
-              );
-            })}
+            {data.length === 0 ? (
+              <p className="dashboard__no__notes">You do not have any note at the moment, please click the + sign at the bottom right to add a note</p>
+            ) : (
+              data.map((note) => {
+                return (
+                  <Link to={`/note/${note.id}`} key={note.id}>
+                    <Note
+                      title={note.title}
+                      categoryColor={categoryColorPicker(note.category)}
+                    />
+                  </Link>
+                );
+              })
+            )}
           </div>
         </div>
       </div>

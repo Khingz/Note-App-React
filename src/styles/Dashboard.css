@@ -47,7 +47,6 @@
     justify-self: center;
 }
 
-
 @media screen and (max-width: 1200px) {
     .dashboard__note__items {
         grid-template-columns: repeat(2, 1fr);
