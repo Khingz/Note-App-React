@@ -4,6 +4,9 @@ import Navbar from "../component/navbar";
 import "../styles/UpdateNote.css";
 import { NoteContext } from "../context/Context";
 import { useState } from "react";
+import { collection, updateDoc, doc } from "firebase/firestore";
+import { db } from "../firebase-config";
+
 
 const UpdateNote = () => {
   const navigate = useNavigate();
@@ -16,12 +19,25 @@ const UpdateNote = () => {
   const [title, setTitle] = useState(note.title);
   const [message, setMessage] = useState(note.message);
   const [category, setCategory] = useState(note.category);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title, message, category);
-    navigate(`/note/${noteId}`);
+    if(!title || !message || !category) {
+      console.log('error');
+      return false;
+    }
+    const data = {
+      title, message, category
+    }
+    updateNote(data)
   };
+
+  
+  const updateNote = async (data) => {
+    const note = doc(db, 'notes', noteId)
+    await updateDoc(note, data)
+  }
 
   //render if loading
   if (loading) {
@@ -34,6 +50,7 @@ const UpdateNote = () => {
       </div>
     );
   }
+
   
   return (
     <div className="update__note__main">
