@@ -32,7 +32,7 @@ function App() {
     };
 
     getNotes();
-  }, [dispatch]);
+  },);
   return (
     <div className="App">
       <Router>

@@ -4,7 +4,7 @@ import Navbar from "../component/navbar";
 import "../styles/UpdateNote.css";
 import { NoteContext } from "../context/Context";
 import { useState } from "react";
-import { collection, updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase-config";
 
 
@@ -31,6 +31,7 @@ const UpdateNote = () => {
       title, message, category
     }
     updateNote(data)
+    navigate(`/note/${noteId}`)
   };
 
   

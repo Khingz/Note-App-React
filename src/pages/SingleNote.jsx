@@ -1,16 +1,26 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { NoteContext } from "../context/Context";
 import Navbar from "../component/navbar";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../firebase-config";
+
 
 import "../styles/SingleNote.css";
 
 const SingleNote = () => {
+  const navigate = useNavigate()
   const { noteId } = useParams();
   const { state } = NoteContext();
   const { data, loading, err } = state.notes;
 
   const note = data.find((note) => note.id === noteId);
+
+  const handleDelete = async () => {
+    const note = doc(db, 'notes', noteId)
+    navigate('/dashboard')
+    await deleteDoc(note, data)
+  }
 
   //render if loading
   if (loading) {
@@ -46,7 +56,7 @@ const SingleNote = () => {
         <div className="single__not__btn">
           <Link to="/dashboard">Back</Link>
           <Link to={`/update-note/${noteId}`}>Edit</Link>
-          <button>Delete</button>
+          <button onClick={handleDelete}>Delete</button>
         </div>
       </div>
 

@@ -19,7 +19,7 @@ const AddNote = () => {
       return false;
     }
     createNote()
-    // navigate('/dashboard');
+    navigate('/dashboard');
   };
 
   const createNote = async () => {
