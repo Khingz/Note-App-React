@@ -15,10 +15,11 @@ import { db } from "../src/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { NOTE_ERROR, NOTE_SUCCESS } from "../src/context/actionTypes";
 import UpdateNote from "./pages/UpdateNote";
+import ScrollToTop from "./helpers/scrollToTop";
 
 
 function App() {
-  const { dispatch, state } = NoteContext();
+  const { dispatch } = NoteContext();
   useEffect(() => {
     const notesCollectionRef = collection(db, "notes");
     const getNotes = async () => {
@@ -27,15 +28,16 @@ function App() {
         const notes = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
         dispatch({ type: NOTE_SUCCESS, payload: notes });
       } catch (err) {
-        dispatch({ type: NOTE_ERROR, payload: err });
+        dispatch({ type: NOTE_ERROR, payload: err || 'An error occured please try again' });
       }
     };
 
     getNotes();
-  }, []);
+  }, [dispatch]); 
   return (
     <div className="App">
       <Router>
+      <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />

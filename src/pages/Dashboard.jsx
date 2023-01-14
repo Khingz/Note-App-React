@@ -11,7 +11,7 @@ import { NoteContext } from "../context/Context";
 const Dashboard = () => {
   const { state } = NoteContext();
   const { data, loading, err } = state.notes;
-  console.log(data)
+  console.log(err)
 
   //assign color depending on category
   const categoryColorPicker = (category) => {
@@ -37,7 +37,7 @@ const Dashboard = () => {
   }
 
   data.map(note => {
-    categoryCount[note.category] ++
+    return categoryCount[note.category] ++
   })
 
   let categoryKey = Object.keys(categoryCount);
@@ -45,7 +45,8 @@ const Dashboard = () => {
 const renderCat = categoryKey.map((key, index) => {
   if(categoryCount[key] > 0) {
     return <Category category={key} count={categoryCount[key]} key={index}/>
-  }
+  } 
+  return false;
 })
   //render if loading
   if (loading) {
@@ -60,7 +61,7 @@ const renderCat = categoryKey.map((key, index) => {
   }
 
   //render if error
-  if ((Object.keys(err).length > 0) && (data.length < 0)) {
+  if ((Object.keys(err).length > 0)) {
     return (
       <div className="dashboard__main">
         <Navbar />
