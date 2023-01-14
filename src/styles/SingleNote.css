@@ -8,6 +8,7 @@
     border-top: 1px solid var(--cyan);
     width: 40%;
     margin-left: 60%;
+    margin-bottom: 4rem;
 }
 
 .single__note__container {
