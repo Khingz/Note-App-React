@@ -4,9 +4,12 @@ import Navbar from "../component/navbar";
 import "../styles/AddNote.css";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
+import { NoteContext } from '../context/Context';
+
 
 const AddNote = () => {
   const navigate = useNavigate();
+  const { getNotes } = NoteContext();
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [category, setCategory] = useState("personal");
@@ -19,6 +22,7 @@ const AddNote = () => {
       return false;
     }
     createNote()
+    getNotes()
     navigate('/dashboard');
   };
 

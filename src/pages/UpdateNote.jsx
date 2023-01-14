@@ -11,7 +11,7 @@ import { db } from "../firebase-config";
 const UpdateNote = () => {
   const navigate = useNavigate();
   const { noteId } = useParams();
-  const { state } = NoteContext();
+  const { state, getNotes } = NoteContext();
   const { data, loading, err } = state.notes;
 
   const note = data.find((note) => note.id === noteId);
@@ -31,6 +31,7 @@ const UpdateNote = () => {
       title, message, category
     }
     updateNote(data)
+    getNotes()
     navigate(`/note/${noteId}`)
   };
 

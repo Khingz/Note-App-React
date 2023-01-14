@@ -1,26 +1,26 @@
-import React from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { NoteContext } from "../context/Context";
-import Navbar from "../component/navbar";
-import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "../firebase-config";
+import React from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { NoteContext } from '../context/Context';
+import Navbar from '../component/navbar';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../firebase-config';
 
-
-import "../styles/SingleNote.css";
+import '../styles/SingleNote.css';
 
 const SingleNote = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { noteId } = useParams();
-  const { state } = NoteContext();
+  const { state, getNotes } = NoteContext();
   const { data, loading, err } = state.notes;
 
   const note = data.find((note) => note.id === noteId);
 
   const handleDelete = async () => {
-    const note = doc(db, 'notes', noteId)
-    navigate('/dashboard')
-    await deleteDoc(note, data)
-  }
+    const note = doc(db, 'notes', noteId);
+    await deleteDoc(note, data);
+    await getNotes();
+    navigate('/dashboard');
+  };
 
   //render if loading
   if (loading) {

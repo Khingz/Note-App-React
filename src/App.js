@@ -9,31 +9,16 @@ import AddNote from './pages/AddNote';
 import Profile from './pages/Profile';
 import SingleNote from './pages/SingleNote';
 import { NoteContext } from "../src/context/Context";
-
-//firebase imports
-import { db } from "../src/firebase-config";
-import { collection, getDocs } from "firebase/firestore";
-import { NOTE_ERROR, NOTE_SUCCESS } from "../src/context/actionTypes";
 import UpdateNote from "./pages/UpdateNote";
 import ScrollToTop from "./helpers/scrollToTop";
 
 
 function App() {
-  const { dispatch } = NoteContext();
+  const { getNotes } = NoteContext();
   useEffect(() => {
-    const notesCollectionRef = collection(db, "notes");
-    const getNotes = async () => {
-      try {
-        const data = await getDocs(notesCollectionRef);
-        const notes = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        dispatch({ type: NOTE_SUCCESS, payload: notes });
-      } catch (err) {
-        dispatch({ type: NOTE_ERROR, payload: err || 'An error occured please try again' });
-      }
-    };
 
     getNotes();
-  }, [dispatch]); 
+  }, []); 
   return (
     <div className="App">
       <Router>
