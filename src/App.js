@@ -18,7 +18,7 @@ import UpdateNote from "./pages/UpdateNote";
 
 
 function App() {
-  const { dispatch } = NoteContext();
+  const { dispatch, state } = NoteContext();
   useEffect(() => {
     const notesCollectionRef = collection(db, "notes");
     const getNotes = async () => {
@@ -32,7 +32,7 @@ function App() {
     };
 
     getNotes();
-  },);
+  }, []);
   return (
     <div className="App">
       <Router>

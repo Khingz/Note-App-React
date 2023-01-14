@@ -11,7 +11,7 @@ import { NoteContext } from "../context/Context";
 const Dashboard = () => {
   const { state } = NoteContext();
   const { data, loading, err } = state.notes;
- 
+  console.log(data)
 
   //assign color depending on category
   const categoryColorPicker = (category) => {
@@ -28,6 +28,25 @@ const Dashboard = () => {
     }
   };
 
+  //category count
+  let categoryCount = {
+    personal : 0,
+    religious: 0,
+    business: 0,
+    education: 0
+  }
+
+  data.map(note => {
+    categoryCount[note.category] ++
+  })
+
+  let categoryKey = Object.keys(categoryCount);
+
+const renderCat = categoryKey.map((key, index) => {
+  if(categoryCount[key] > 0) {
+    return <Category category={key} count={categoryCount[key]} key={index}/>
+  }
+})
   //render if loading
   if (loading) {
     return (
@@ -70,9 +89,10 @@ const Dashboard = () => {
             <>
               <h4>Categories</h4>
               <div className="dashboard__category__items">
+                {/* <Category category="home" count="23" />
                 <Category category="home" count="23" />
-                <Category category="home" count="23" />
-                <Category category="home" count="23" />
+                <Category category="home" count="23" /> */}
+                {renderCat}
               </div>
             </>
           )}
@@ -81,7 +101,7 @@ const Dashboard = () => {
           <h4>Your Notes</h4>
           <div className="dashboard__note__items">
             {data.length === 0 ? (
-              <p className="dashboard__no__notes">You do not have any note at the moment, please click the + sign at the bottom right to add a note</p>
+              <p className="">You do not have any note at the moment, please click the + sign at the bottom right to add a note</p>
             ) : (
               data.map((note) => {
                 return (
