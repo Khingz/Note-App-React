@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { NoteContext } from '../context/Context';
+import { NoteContext } from '../context/NoteContext';
 import Navbar from '../component/navbar';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase-config';

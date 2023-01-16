@@ -1,45 +1,45 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../component/navbar";
-import "../styles/AddNote.css";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase-config";
-import { NoteContext } from '../context/Context';
-
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../component/navbar';
+import '../styles/AddNote.css';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase-config';
+import { NoteContext } from '../context/NoteContext';
 
 const AddNote = () => {
   const navigate = useNavigate();
   const { getNotes } = NoteContext();
-  const [title, setTitle] = useState("");
-  const [message, setMessage] = useState("");
-  const [category, setCategory] = useState("personal");
-
+  const [title, setTitle] = useState('');
+  const [message, setMessage] = useState('');
+  const [category, setCategory] = useState('personal');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!title || !message || !category) {
+    if (!title || !message || !category) {
       console.log('error');
       return false;
     }
-    createNote()
-    getNotes()
+    createNote();
+    getNotes();
     navigate('/dashboard');
   };
 
   const createNote = async () => {
-    const notesCollectionRef = collection(db, "notes");
+    const notesCollectionRef = collection(db, 'notes');
     const data = {
-      title, message, category
-    }
-    await addDoc(notesCollectionRef, data)
-  }
+      title,
+      message,
+      category,
+    };
+    await addDoc(notesCollectionRef, data);
+  };
 
   return (
     <div className="add__note__main">
       <Navbar />
       <div className="add__note__container">
         <h3>Add New Note</h3>
-        <form action=""  onSubmit={handleSubmit}>
+        <form action="" onSubmit={handleSubmit}>
           <div className="note__title">
             <label htmlFor="">Note title</label>
             <input

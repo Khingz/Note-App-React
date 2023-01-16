@@ -1,45 +1,44 @@
-import React from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import Navbar from "../component/navbar";
-import "../styles/UpdateNote.css";
-import { NoteContext } from "../context/Context";
-import { useState } from "react";
-import { updateDoc, doc } from "firebase/firestore";
-import { db } from "../firebase-config";
-
+import React from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import Navbar from '../component/navbar';
+import '../styles/UpdateNote.css';
+import { NoteContext } from '../context/NoteContext';
+import { useState } from 'react';
+import { updateDoc, doc } from 'firebase/firestore';
+import { db } from '../firebase-config';
 
 const UpdateNote = () => {
   const navigate = useNavigate();
   const { noteId } = useParams();
   const { state, getNotes } = NoteContext();
-  const { data, loading, err } = state.notes;
+  const { data, loading } = state.notes;
 
   const note = data.find((note) => note.id === noteId);
 
   const [title, setTitle] = useState(note.title);
   const [message, setMessage] = useState(note.message);
   const [category, setCategory] = useState(note.category);
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!title || !message || !category) {
+    if (!title || !message || !category) {
       console.log('error');
       return false;
     }
     const data = {
-      title, message, category
-    }
-    updateNote(data)
-    getNotes()
-    navigate(`/note/${noteId}`)
+      title,
+      message,
+      category,
+    };
+    updateNote(data);
+    getNotes();
+    navigate(`/note/${noteId}`);
   };
 
-  
   const updateNote = async (data) => {
-    const note = doc(db, 'notes', noteId)
-    await updateDoc(note, data)
-  }
+    const note = doc(db, 'notes', noteId);
+    await updateDoc(note, data);
+  };
 
   //render if loading
   if (loading) {
@@ -53,7 +52,6 @@ const UpdateNote = () => {
     );
   }
 
-  
   return (
     <div className="update__note__main">
       <Navbar />

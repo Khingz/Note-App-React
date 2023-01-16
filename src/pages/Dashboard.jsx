@@ -1,53 +1,52 @@
-import React from "react";
-import Category from "../component/category";
-import Note from "../component/note";
-import "../styles/Dashboard.css";
-import { BsPlusCircleFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
-import Navbar from "../component/navbar";
-import { NoteContext } from "../context/Context";
-
+import React from 'react';
+import Category from '../component/category';
+import Note from '../component/note';
+import '../styles/Dashboard.css';
+import { BsPlusCircleFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
+import Navbar from '../component/navbar';
+import { NoteContext } from '../context/NoteContext';
 
 const Dashboard = () => {
   const { state } = NoteContext();
   const { data, loading, err } = state.notes;
-  console.log(err)
+  console.log(err);
 
   //assign color depending on category
   const categoryColorPicker = (category) => {
-    if (category === "personal") {
-      return "#1d3672";
-    } else if (category === "religious") {
-      return "#663e65";
-    } else if (category === "business") {
-      return "#a3436a";
-    } else if (category === "education") {
-      return "#df6f6a";
+    if (category === 'personal') {
+      return '#1d3672';
+    } else if (category === 'religious') {
+      return '#663e65';
+    } else if (category === 'business') {
+      return '#a3436a';
+    } else if (category === 'education') {
+      return '#df6f6a';
     } else {
-      return "#1d3672";
+      return '#1d3672';
     }
   };
 
   //category count
   let categoryCount = {
-    personal : 0,
+    personal: 0,
     religious: 0,
     business: 0,
-    education: 0
-  }
+    education: 0,
+  };
 
-  data.map(note => {
-    return categoryCount[note.category] ++
-  })
+  data.map((note) => {
+    return categoryCount[note.category]++;
+  });
 
   let categoryKey = Object.keys(categoryCount);
 
-const renderCat = categoryKey.map((key, index) => {
-  if(categoryCount[key] > 0) {
-    return <Category category={key} count={categoryCount[key]} key={index}/>
-  } 
-  return false;
-})
+  const renderCat = categoryKey.map((key, index) => {
+    if (categoryCount[key] > 0) {
+      return <Category category={key} count={categoryCount[key]} key={index} />;
+    }
+    return false;
+  });
   //render if loading
   if (loading) {
     return (
@@ -61,7 +60,7 @@ const renderCat = categoryKey.map((key, index) => {
   }
 
   //render if error
-  if ((Object.keys(err).length > 0)) {
+  if (Object.keys(err).length > 0) {
     return (
       <div className="dashboard__main">
         <Navbar />
@@ -102,7 +101,10 @@ const renderCat = categoryKey.map((key, index) => {
           <h4>Your Notes</h4>
           <div className="dashboard__note__items">
             {data.length === 0 ? (
-              <p className="">You do not have any note at the moment, please click the + sign at the bottom right to add a note</p>
+              <p className="">
+                You do not have any note at the moment, please click the + sign
+                at the bottom right to add a note
+              </p>
             ) : (
               data.map((note) => {
                 return (
