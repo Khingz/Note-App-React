@@ -8,12 +8,12 @@ import Dashboard from './pages/Dashboard';
 import AddNote from './pages/AddNote';
 import Profile from './pages/Profile';
 import SingleNote from './pages/SingleNote';
-import { NoteContext } from './context/NoteContext';
+import {GlobalContext } from './context/GlobalContext';
 import UpdateNote from './pages/UpdateNote';
 import ScrollToTop from './helpers/scrollToTop';
 
 function App() {
-  const { getNotes } = NoteContext();
+  const { getNotes } =GlobalContext();
   useEffect(() => {
     getNotes();
   }, [getNotes]);

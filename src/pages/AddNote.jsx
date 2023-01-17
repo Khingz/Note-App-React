@@ -4,11 +4,11 @@ import Navbar from '../component/navbar';
 import '../styles/AddNote.css';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase-config';
-import { NoteContext } from '../context/NoteContext';
+import { GlobalContext } from '../context/GlobalContext';
 
 const AddNote = () => {
   const navigate = useNavigate();
-  const { getNotes } = NoteContext();
+  const { getNotes } = GlobalContext();
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
   const [category, setCategory] = useState('personal');

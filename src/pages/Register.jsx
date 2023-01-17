@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Register.css';
-import { useAuth } from '../context/AuthContext';
+import { GlobalContext } from '../context/GlobalContext';
 import { useState } from 'react';
 
 const Register = () => {
-  const { signup } = useAuth;
-  const [fullname, setFullname] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [password2, setPassword2] = useState('')
-
+  const { signup } = GlobalContext();
+  const [fullname, setFullname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,8 +21,8 @@ const Register = () => {
       console.log('Password does not match');
       return false;
     }
-    signup(fullname, email, password)
-  }
+    signup(fullname, email, password);
+  };
   return (
     <div className="register__container">
       <h3 className="register__title">
@@ -53,7 +52,7 @@ const Register = () => {
         <div className="password__container">
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder="Enter your password"
@@ -63,7 +62,7 @@ const Register = () => {
         <div className="password__confirm__container">
           <label htmlFor="password__confirm">Confirm Password</label>
           <input
-            type="text"
+            type="password"
             name="confirmPassword"
             id="confirmPassword"
             placeholder="Confirm password"

@@ -5,10 +5,10 @@ import '../styles/Dashboard.css';
 import { BsPlusCircleFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Navbar from '../component/navbar';
-import { NoteContext } from '../context/NoteContext';
+import { GlobalContext } from '../context/GlobalContext';
 
 const Dashboard = () => {
-  const { state } = NoteContext();
+  const { state } = GlobalContext();
   const { data, loading, err } = state.notes;
   console.log(err);
 
