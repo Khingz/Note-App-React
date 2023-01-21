@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { reducer } from "./Reducers";
-import { db, auth, emailPassword } from "../firebase-config";
+import { db, auth } from "../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { NOTE_ERROR, NOTE_SUCCESS } from "./actionTypes";
+import {createUserWithEmailAndPassword} from 'firebase/auth';
 
 
 
@@ -36,7 +37,7 @@ const Context = ({ children }) => {
   //signup user
   const signup = async (fullname, email, password) => {
     try {
-      const res = await auth.createUserWithEmailAndPassword(fullname, email, password);
+      const res = await createUserWithEmailAndPassword(auth,  fullname, email, password);
       // const user = res.user;
       // await addDoc(collection(db, "users"), {
       //   uid: user.uid,
