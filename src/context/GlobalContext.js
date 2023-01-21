@@ -1,27 +1,26 @@
-import React, { createContext, useContext, useReducer } from "react";
-import { reducer } from "./Reducers";
-import { db, auth, emailPassword } from "../firebase-config";
-import { collection, getDocs } from "firebase/firestore";
-import { NOTE_ERROR, NOTE_SUCCESS } from "./actionTypes";
-
-
+import React, { createContext, useContext, useReducer } from 'react';
+import { reducer } from './Reducers';
+import { db, auth } from '../firebase-config';
+import { collection, getDocs } from 'firebase/firestore';
+import { NOTE_ERROR, NOTE_SUCCESS } from './actionTypes';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 export const Notes = createContext();
 
 //db variables
-const notesCollectionRef = collection(db, "notes");
+const notesCollectionRef = collection(db, 'notes');
 
 const Context = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     notes: {
       loading: true,
       data: [],
-      err: {}
+      err: {},
     },
-    user: {}
+    user: {},
   });
 
-  //get notes 
+  //get notes
   const getNotes = async () => {
     try {
       const data = await getDocs(notesCollectionRef);
@@ -29,30 +28,34 @@ const Context = ({ children }) => {
       dispatch({ type: NOTE_SUCCESS, payload: notes });
     } catch (err) {
       console.log(err);
-      dispatch({ type: NOTE_ERROR, payload: err || 'An error occured please try again' });
+      dispatch({
+        type: NOTE_ERROR,
+        payload: err || 'An error occured please try again',
+      });
     }
   };
 
   //signup user
-  const signup = async (fullname, email, password) => {
-    try {
-      const res = await auth.createUserWithEmailAndPassword(fullname, email, password);
-      // const user = res.user;
-      // await addDoc(collection(db, "users"), {
-      //   uid: user.uid,
-      //   name,
-      //   authProvider: "local",
-      //   email,
-      // });
-      console.log(res);
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
+
+const signup = (fullname, email, password) => {
+  createUserWithEmailAndPassword(auth, fullname, email, password)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
 }
 
   return (
-    <Notes.Provider value={{ state, dispatch, getNotes, signup }}>{children}</Notes.Provider>
+    <Notes.Provider value={{ state, dispatch, getNotes, signup }}>
+      {children}
+    </Notes.Provider>
   );
 };
 

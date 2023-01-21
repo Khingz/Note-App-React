@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Category from '../component/category';
 import Note from '../component/note';
 import '../styles/Dashboard.css';
@@ -8,7 +8,7 @@ import Navbar from '../component/navbar';
 import { GlobalContext } from '../context/GlobalContext';
 
 const Dashboard = () => {
-  const { state } = GlobalContext();
+  const { state, getNotes } = GlobalContext();
   const { data, loading, err } = state.notes;
   console.log(err);
 
@@ -47,6 +47,12 @@ const Dashboard = () => {
     }
     return false;
   });
+
+
+  //Use effect on initial page load to get nootes
+  useEffect(() => {
+    getNotes(); 
+  }, []);
   //render if loading
   if (loading) {
     return (
