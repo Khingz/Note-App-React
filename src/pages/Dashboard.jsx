@@ -6,6 +6,7 @@ import { BsPlusCircleFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Navbar from '../component/navbar';
 import { GlobalContext } from '../context/GlobalContext';
+import Spinner from '../component/Spinner';
 
 const Dashboard = () => {
   const { state, getNotes } = GlobalContext();
@@ -52,14 +53,17 @@ const Dashboard = () => {
   //Use effect on initial page load to get nootes
   useEffect(() => {
     getNotes(); 
-  }, []);
+  }, 
+  // eslint-disable-next-line
+  []);
+
   //render if loading
   if (loading) {
     return (
       <div className="dashboard__main">
         <Navbar />
-        <div className="dashboard__container">
-          <h3>Loading...</h3>
+        <div className="dashboard__spinner">
+          <Spinner />
         </div>
       </div>
     );
@@ -77,6 +81,7 @@ const Dashboard = () => {
     );
   }
 
+  //render page if no error and not laoding
   return (
     <div className="dashboard__main">
       <Navbar />

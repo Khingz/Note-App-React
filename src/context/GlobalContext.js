@@ -1,9 +1,8 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { reducer } from './Reducers';
-import { db, auth } from '../firebase-config';
+import { db } from '../firebase-config';
 import { collection, getDocs } from 'firebase/firestore';
 import { NOTE_ERROR, NOTE_SUCCESS } from './actionTypes';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 export const Notes = createContext();
 
@@ -35,25 +34,13 @@ const Context = ({ children }) => {
     }
   };
 
-  //signup user
 
-const signup = (fullname, email, password) => {
-  createUserWithEmailAndPassword(auth, fullname, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    console.log(user);
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-}
+
+  //Signup/Register a new user
+
 
   return (
-    <Notes.Provider value={{ state, dispatch, getNotes, signup }}>
+    <Notes.Provider value={{ state, dispatch, getNotes}}>
       {children}
     </Notes.Provider>
   );
