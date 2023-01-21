@@ -40,16 +40,17 @@ const CategorySorted = () => {
   return (
     <div className="category__sorted__container">
       <Navbar />
+    
+      <div className="sorted__cat__container">
       <div className="sorted__home">
           <Link to='/dashboard'>Home</Link>
         </div>
-      <div className="sorted__cat__container">
         <h2>{category}</h2>
         <div className="cat__sorted__notes">
           {sortedNotes.map((note) => {
             return (
-              <div className="sorted__notes">
-                <Link to={`/notes/${note.id}`} key={note.id}>
+              <div className="sorted__notes" key={note.id}>
+                <Link to={`/notes/${note.id}`} >
                   <Note
                     title={note.title}
                     categoryColor={categoryColorPicker(note.category)}

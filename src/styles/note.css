@@ -11,6 +11,8 @@
 
 .note__container .note__title {
     text-transform: capitalize;
+    word-break: keep-all;
+    overflow-x: hidden;
 }
 
 .note__category {

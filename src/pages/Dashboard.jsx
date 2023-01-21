@@ -11,9 +11,7 @@ import Spinner from '../component/Spinner';
 const Dashboard = () => {
   const { state, getNotes, categoryColorPicker } = GlobalContext();
   const { data, loading, err } = state.notes;
-  console.log(err);
-
-
+console.log(err.msg);
 
   //category count
   let categoryCount = {
@@ -67,7 +65,7 @@ const Dashboard = () => {
       <div className="dashboard__main">
         <Navbar />
         <div className="dashboard__container">
-          <h3>Sorry an error occured, try again later...</h3>
+          <h3>Something went wrong, please try again...</h3>
         </div>
       </div>
     );

@@ -1,25 +1,40 @@
 .sorted__home {
-    font-size: 1.1rem;
-    margin-left: 2rem;
-    margin-top: 2rem;
-    text-decoration: underline;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  text-decoration: underline;
 }
 
 .sorted__cat__container {
-    width: 80%;
-    margin-top: 2rem;
-    margin: auto;
+  width: 80%;
+  margin-top: 2rem;
+  margin: auto;
 }
 
 .sorted__cat__container h2 {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
-.sorted__notes {
-    display: grid;
+.cat__sorted__notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .dashboard__note__items {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  }
 }
 
 @media screen and (max-width: 800px) {
+  .cat__sorted__notes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 576px) {
+    .cat__sorted__notes {
+        grid-template-columns: repeat(1, 1fr);
+      }
 }
