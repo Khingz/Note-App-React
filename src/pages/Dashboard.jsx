@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Category from '../component/category';
 import Note from '../component/note';
 import '../styles/Dashboard.css';
@@ -6,26 +6,14 @@ import { BsPlusCircleFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Navbar from '../component/navbar';
 import { GlobalContext } from '../context/GlobalContext';
+import Spinner from '../component/Spinner';
 
 const Dashboard = () => {
-  const { state } = GlobalContext();
+  const { state, getNotes, categoryColorPicker } = GlobalContext();
   const { data, loading, err } = state.notes;
   console.log(err);
 
-  //assign color depending on category
-  const categoryColorPicker = (category) => {
-    if (category === 'personal') {
-      return '#1d3672';
-    } else if (category === 'religious') {
-      return '#663e65';
-    } else if (category === 'business') {
-      return '#a3436a';
-    } else if (category === 'education') {
-      return '#df6f6a';
-    } else {
-      return '#1d3672';
-    }
-  };
+
 
   //category count
   let categoryCount = {
@@ -43,17 +31,31 @@ const Dashboard = () => {
 
   const renderCat = categoryKey.map((key, index) => {
     if (categoryCount[key] > 0) {
-      return <Category category={key} count={categoryCount[key]} key={index} />;
+      return (
+        <Link to={`/notes/categories/${key}`}>
+          <Category category={key} count={categoryCount[key]} key={index} />
+        </Link>
+      );
     }
     return false;
   });
+
+  //Use effect on initial page load to get nootes
+  useEffect(
+    () => {
+      getNotes();
+    },
+    // eslint-disable-next-line
+    []
+  );
+
   //render if loading
   if (loading) {
     return (
       <div className="dashboard__main">
         <Navbar />
-        <div className="dashboard__container">
-          <h3>Loading...</h3>
+        <div className="dashboard__spinner">
+          <Spinner />
         </div>
       </div>
     );
@@ -71,6 +73,7 @@ const Dashboard = () => {
     );
   }
 
+  //render page if no error and not laoding
   return (
     <div className="dashboard__main">
       <Navbar />
@@ -108,7 +111,7 @@ const Dashboard = () => {
             ) : (
               data.map((note) => {
                 return (
-                  <Link to={`/note/${note.id}`} key={note.id}>
+                  <Link to={`/notes/${note.id}`} key={note.id}>
                     <Note
                       title={note.title}
                       categoryColor={categoryColorPicker(note.category)}

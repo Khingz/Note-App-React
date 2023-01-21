@@ -1,3 +1,11 @@
+a {
+    text-decoration: none;
+}
+.dashboard__spinner {
+    text-align: center;
+    margin-top: 5rem;
+}
+
 .dashboard__container {
     width: 70%;
     margin: 2rem auto;
@@ -9,6 +17,7 @@
     position: fixed;
     top: 40rem;
     right: 8%;
+    z-index: 2;
 }
 
 .dashboard__add__task a{
@@ -26,6 +35,10 @@
     font-style: italic;
 }
 
+.dashboard__category {
+    overflow-x: hidden;
+}
+
 .dashboard__category__items {
     display: flex;
     gap: 1rem;
@@ -36,6 +49,9 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .dashboard__note__items a {
@@ -54,6 +70,17 @@
 }
 
 @media screen and (max-width: 800px) {
+    .dashboard__container {
+        width: 90%;
+    }
+    .dashboard__note__items {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+
+    }
+}
+
+@media screen and (max-width: 576px) {
     .dashboard__container {
         width: 90%;
     }

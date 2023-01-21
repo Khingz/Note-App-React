@@ -42,7 +42,7 @@ const Register = () => {
         <div className="username__container">
           <label htmlFor="username">Email</label>
           <input
-            type="text"
+            type="email"
             name="email"
             id="email"
             placeholder="Enter your email"

@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 
 const navbar = () => {
+  const handleLogout = () => {
+    window.location.pathname = '/signin';
+  }
   return (
     <div className="navbar__container">
       <div className="brand__name">
@@ -17,7 +20,7 @@ const navbar = () => {
             <p className="username">Alan</p>
           </Link>
         </div>
-        <button>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );

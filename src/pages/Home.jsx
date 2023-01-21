@@ -13,7 +13,7 @@ const Home = () => {
       </div>
       <div className="home__right">
         <p>
-          Make all <br /> <span>your</span> <span>things</span> <span>organized</span>
+          Your thoughts, <br /> <span>your ideas</span> <span>in a safe</span> <span>place</span>
         </p>
         <div className="home__login__signup">
           <div className="home__signup">

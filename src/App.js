@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -8,15 +6,14 @@ import Dashboard from './pages/Dashboard';
 import AddNote from './pages/AddNote';
 import Profile from './pages/Profile';
 import SingleNote from './pages/SingleNote';
-import {GlobalContext } from './context/GlobalContext';
 import UpdateNote from './pages/UpdateNote';
 import ScrollToTop from './helpers/scrollToTop';
+import CategorySorted from './pages/CategorySorted';
+
+import './App.css';
+
 
 function App() {
-  const { getNotes } =GlobalContext();
-  useEffect(() => {
-    getNotes();
-  }, [getNotes]);
   return (
     <div className="App">
       <Router>
@@ -29,7 +26,8 @@ function App() {
           <Route path="/add-note" element={<AddNote />} />
           <Route path="/update-note/:noteId" element={<UpdateNote />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/note/:noteId" element={<SingleNote />} />
+          <Route path="/notes/:noteId" element={<SingleNote />} />
+          <Route path="/notes/categories/:category" element={<CategorySorted />} />
         </Routes>
       </Router>
     </div>
