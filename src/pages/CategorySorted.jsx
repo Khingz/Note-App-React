@@ -3,31 +3,60 @@ import Navbar from '../component/navbar';
 import { useParams, Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
 import Note from '../component/note';
+import Spinner from '../component/Spinner';
 
-import '../styles/CategorySorted.css'
+import '../styles/CategorySorted.css';
+import { useEffect } from 'react';
 
 const CategorySorted = () => {
   // const navigate = useNavigate();
   const { category } = useParams();
-  const { state, categoryColorPicker } = GlobalContext();
-  const { data } = state.notes;
-  const sortedNotes = data.filter(note => note.category.toLowercase() === category.toLowerCase());
-console.log(data);
+  const { state, categoryColorPicker, getNotes } = GlobalContext();
+  const { data, loading } = state.notes;
+  const sortedNotes = data.filter(
+    (note) => note.category.toLowerCase() === category.toLowerCase()
+  );
+
+  useEffect(
+    () => {
+      getNotes();
+    },
+    // eslint-disable-next-line
+    []
+  );
+  console.log(data);
+
+  //render if loading
+  if (loading) {
+    return (
+      <div className="dashboard__main">
+        <Navbar />
+        <div className="dashboard__spinner">
+          <Spinner />
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className='category__sorted__container'>
+    <div className="category__sorted__container">
       <Navbar />
+      <div className="sorted__home">
+          <Link to='/dashboard'>Home</Link>
+        </div>
       <div className="sorted__cat__container">
         <h2>{category}</h2>
         <div className="cat__sorted__notes">
-          {sortedNotes.map(note => {
+          {sortedNotes.map((note) => {
             return (
-              <Link to={`/notes/${note.id}`} key={note.id}>
-              <Note
-                title={note.title}
-                categoryColor={categoryColorPicker(note.category)}
-              />
-              </Link>
-            )
+              <div className="sorted__notes">
+                <Link to={`/notes/${note.id}`} key={note.id}>
+                  <Note
+                    title={note.title}
+                    categoryColor={categoryColorPicker(note.category)}
+                  />
+                </Link>
+              </div>
+            );
           })}
         </div>
       </div>

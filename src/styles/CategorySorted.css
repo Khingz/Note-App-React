@@ -1,4 +1,9 @@
-
+.sorted__home {
+    font-size: 1.1rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    text-decoration: underline;
+}
 
 .sorted__cat__container {
     width: 80%;
@@ -8,6 +13,12 @@
 
 .sorted__cat__container h2 {
     text-transform: uppercase;
+}
+
+.sorted__notes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
 
 @media screen and (max-width: 800px) {
