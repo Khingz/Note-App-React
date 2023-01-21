@@ -73,8 +73,8 @@ const AddNote = () => {
             </select>
           </div>
           <div className="add__cancel__note">
-            <input type="submit" value="Add Note" />
             <Link to="/dashboard">Cancel</Link>
+            <input type="submit" value="Add Note" />
           </div>
         </form>
       </div>

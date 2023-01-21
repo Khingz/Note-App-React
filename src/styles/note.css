@@ -2,7 +2,7 @@
     background: var(--cyan);
     color: var(--white);
     border-radius: 8px;
-    width: 15rem;
+    min-width: 8rem;
     padding: 0.5rem;
     display: flex;
     justify-content: flex-start;

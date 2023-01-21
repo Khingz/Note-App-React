@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import SingleNote from './pages/SingleNote';
 import UpdateNote from './pages/UpdateNote';
 import ScrollToTop from './helpers/scrollToTop';
+import CategorySorted from './pages/CategorySorted';
 
 import './App.css';
 
@@ -25,7 +26,8 @@ function App() {
           <Route path="/add-note" element={<AddNote />} />
           <Route path="/update-note/:noteId" element={<UpdateNote />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/note/:noteId" element={<SingleNote />} />
+          <Route path="/notes/:noteId" element={<SingleNote />} />
+          <Route path="/notes/categories/:category" element={<CategorySorted />} />
         </Routes>
       </Router>
     </div>

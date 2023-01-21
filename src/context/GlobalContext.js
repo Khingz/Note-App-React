@@ -38,9 +38,24 @@ const Context = ({ children }) => {
 
   //Signup/Register a new user
 
+    //assign color depending on category
+    const categoryColorPicker = (category) => {
+      if (category === 'personal') {
+        return '#1d3672';
+      } else if (category === 'religious') {
+        return '#663e65';
+      } else if (category === 'business') {
+        return '#a3436a';
+      } else if (category === 'education') {
+        return '#df6f6a';
+      } else {
+        return '#1d3672';
+      }
+    };
+
 
   return (
-    <Notes.Provider value={{ state, dispatch, getNotes}}>
+    <Notes.Provider value={{ state, dispatch, getNotes, categoryColorPicker}}>
       {children}
     </Notes.Provider>
   );

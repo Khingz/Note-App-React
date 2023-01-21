@@ -1,0 +1,14 @@
+
+
+.sorted__cat__container {
+    width: 80%;
+    margin-top: 2rem;
+    margin: auto;
+}
+
+.sorted__cat__container h2 {
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 800px) {
+}
