@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
 import Navbar from '../component/navbar';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase-config';
+import Spinner from '../component/Spinner';
 
 import '../styles/SingleNote.css';
 
@@ -22,13 +23,21 @@ const SingleNote = () => {
     navigate('/dashboard');
   };
 
+  useEffect(
+    () => {
+      getNotes();
+    },
+    // eslint-disable-next-line
+    []
+  );
+
   //render if loading
   if (loading) {
     return (
       <div className="dashboard__main">
         <Navbar />
-        <div className="dashboard__container">
-          <h3>Loading...</h3>
+        <div className="dashboard__spinner">
+          <Spinner />
         </div>
       </div>
     );

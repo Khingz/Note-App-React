@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../component/navbar';
 import '../styles/UpdateNote.css';
@@ -32,13 +32,21 @@ const UpdateNote = () => {
     };
     updateNote(data);
     getNotes();
-    navigate(`/note/${noteId}`);
+    navigate(`/notes/${noteId}`);
   };
 
   const updateNote = async (data) => {
     const note = doc(db, 'notes', noteId);
     await updateDoc(note, data);
   };
+
+  useEffect(
+    () => {
+      getNotes();
+    },
+    // eslint-disable-next-line
+    []
+  );
 
   //render if loading
   if (loading) {

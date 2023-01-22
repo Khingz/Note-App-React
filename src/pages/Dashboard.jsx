@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../component/navbar';
 import { GlobalContext } from '../context/GlobalContext';
 import Spinner from '../component/Spinner';
+import DraggableSlider from '../component/DraggableSlider'
 
 const Dashboard = () => {
   const { state, getNotes, categoryColorPicker } = GlobalContext();
@@ -30,7 +31,7 @@ console.log(err.msg);
   const renderCat = categoryKey.map((key, index) => {
     if (categoryCount[key] > 0) {
       return (
-        <Link to={`/notes/categories/${key}`}>
+        <Link to={`/notes/categories/${key}`} key={index}>
           <Category category={key} count={categoryCount[key]} key={index} />
         </Link>
       );
@@ -90,10 +91,8 @@ console.log(err.msg);
             <>
               <h4>Categories</h4>
               <div className="dashboard__category__items">
-                {/* <Category category="home" count="23" />
-                <Category category="home" count="23" />
-                <Category category="home" count="23" /> */}
-                {renderCat}
+                <DraggableSlider children={renderCat} />
+                {/* {renderCat} */}
               </div>
             </>
           )}

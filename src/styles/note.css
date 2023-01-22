@@ -2,7 +2,7 @@
     background: var(--cyan);
     color: var(--white);
     border-radius: 8px;
-    min-width: 8rem;
+    width: minmax(8rem, 18rem);
     padding: 0.5rem;
     display: flex;
     justify-content: flex-start;
@@ -11,8 +11,7 @@
 
 .note__container .note__title {
     text-transform: capitalize;
-    word-break: keep-all;
-    overflow-x: hidden;
+    white-space: nowrap;
 }
 
 .note__category {
