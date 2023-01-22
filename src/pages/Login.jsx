@@ -1,12 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css'
 
 const Login = () => {
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/dashboard')
+  }
   return (
     <div className="login__container">
       <h3 className="login__title">Hello, please login to continue</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="email__container">
           <label htmlFor="email">Email</label>
           <input

@@ -85,8 +85,7 @@ a {
         width: 90%;
     }
     .dashboard__note__items {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr) !important;
         justify-content: center;
-
     }
 }
