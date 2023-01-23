@@ -35,15 +35,6 @@ a {
     font-style: italic;
 }
 
-.dashboard__category {
-    overflow-x: hidden;
-}
-
-.dashboard__category__items {
-    display: flex;
-    gap: 1rem;
-}
-
 .dashboard__note__items {
     width: 100%;
     display: grid;
@@ -88,4 +79,24 @@ a {
         grid-template-columns: repeat(1, 1fr) !important;
         justify-content: center;
     }
+}
+
+
+/* rect library styling */
+/* square buttons */
+.rec.rec-arrow {
+    font-size: 0.9rem;
+    background: none;
+    border: none;
+}
+
+.rec.rec-arrow:hover{
+    background: var(--cyan);
+    color: var(--white);
+}
+
+.rec.rec-arrow:disabled {
+    background: var(--pink);
+    color: var(--white);
+
 }

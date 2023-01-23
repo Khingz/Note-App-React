@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 import Navbar from '../component/navbar';
 import { GlobalContext } from '../context/GlobalContext';
 import Spinner from '../component/Spinner';
-import DraggableSlider from '../component/DraggableSlider'
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const Dashboard = () => {
   const { state, getNotes, categoryColorPicker } = GlobalContext();
   const { data, loading, err } = state.notes;
-console.log(err.msg);
 
   //category count
   let categoryCount = {
@@ -27,16 +27,14 @@ console.log(err.msg);
   });
 
   let categoryKey = Object.keys(categoryCount);
+  let filteredKey = categoryKey.filter((key) => categoryCount[key] > 0);
 
-  const renderCat = categoryKey.map((key, index) => {
-    if (categoryCount[key] > 0) {
-      return (
-        <Link to={`/notes/categories/${key}`} key={index}>
-          <Category category={key} count={categoryCount[key]} key={index} />
-        </Link>
-      );
-    }
-    return false;
+  const renderCat = filteredKey.map((key, index) => {
+    return (
+      <Link to={`/notes/categories/${key}`} key={index}>
+        <Category category={key} count={categoryCount[key]} key={index} />
+      </Link>
+    );
   });
 
   //Use effect on initial page load to get nootes
@@ -47,6 +45,24 @@ console.log(err.msg);
     // eslint-disable-next-line
     []
   );
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 620, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
 
   //render if loading
   if (loading) {
@@ -91,8 +107,13 @@ console.log(err.msg);
             <>
               <h4>Categories</h4>
               <div className="dashboard__category__items">
-                <DraggableSlider children={renderCat} />
-                {/* {renderCat} */}
+                <Carousel
+                  responsive={responsive}
+                  swipeable={true}
+                  draggable={true}
+                >
+                  {renderCat}
+                </Carousel>
               </div>
             </>
           )}

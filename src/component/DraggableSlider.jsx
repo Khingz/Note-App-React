@@ -1,18 +1,19 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import '../styles/DraggableSlider.css';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
-import { useState } from 'react';
 
 const DraggableSlider = ({ children }) => {
-    const [slideCount, setSlideCount] = useState(0);
-    const slideLeft = () => {
-        console.log(children.length - 2);
-        console.log('hello');
+    // const [slideCount, setSlideCount] = useState(0);
+
+    let sliderRef = useRef(0) 
+
+    const slideLeft = (e) => {
+        console.log(sliderRef.current);
     }
   return (
-    <div className="slider">
-      <div className="slider__controls">
+    <div className="slider" ref={sliderRef}>
+      <div className="slider__controls" >
         <HiArrowNarrowLeft onClick={slideLeft}/>
         <HiArrowNarrowRight />
       </div>

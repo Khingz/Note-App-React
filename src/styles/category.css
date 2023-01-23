@@ -2,7 +2,7 @@
     background: var(--cyan);
     color: var(--white);
     border-radius: 8px;
-    min-width: 180px;
+    width: 250px;
     padding: 0.5rem 1rem;
 }
 
