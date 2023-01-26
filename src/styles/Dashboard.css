@@ -35,6 +35,10 @@ a {
     font-style: italic;
 }
 
+.dashboard__category__items {
+    gap: 1rem;
+}
+
 .dashboard__note__items {
     width: 100%;
     display: grid;

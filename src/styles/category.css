@@ -1,23 +1,29 @@
 .category__container {
-    background: var(--cyan);
-    color: var(--white);
-    border-radius: 8px;
-    width: 250px;
-    padding: 0.5rem 1rem;
+  background: var(--cyan);
+  color: var(--white);
+  border-radius: 8px;
+  max-width: 11rem;
+  padding: 0.5rem 1rem;
 }
 
 .category__count {
-    font-weight: lighter;
-    text-transform: uppercase;
+  font-weight: lighter;
+  text-transform: uppercase;
 }
 
 .category__title {
-    text-transform: capitalize;
-    font-weight: 600;
-    font-size: 1.1rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .category__hr {
-    border-top: solid 1px var(--white);
-    margin-bottom: 0.5rem;
+  border-top: solid 1px var(--white);
+  margin-bottom: 0.5rem;
 }
+
+/* @media screen and (max-width: 1029px) {
+  .category__container {
+    width: 9rem;
+  }
+} */
