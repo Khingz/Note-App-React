@@ -61,6 +61,6 @@ const Context = ({ children }) => {
 
 export default Context;
 
-export const GlobalContext = () => {
+export const NoteContext = () => {
   return useContext(Notes);
 };

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../component/navbar';
 import '../styles/UpdateNote.css';
-import { GlobalContext } from '../context/GlobalContext';
+import { NoteContext } from '../context/NoteContext';
 import { useState } from 'react';
 import { updateDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase-config';
@@ -10,7 +10,7 @@ import { db } from '../firebase-config';
 const UpdateNote = () => {
   const navigate = useNavigate();
   const { noteId } = useParams();
-  const { state, getNotes } = GlobalContext();
+  const { state, getNotes } = NoteContext();
   const { data, loading } = state.notes;
 
   const note = data.find((note) => note.id === noteId);

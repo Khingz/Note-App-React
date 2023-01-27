@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { GlobalContext } from '../context/GlobalContext';
+import { NoteContext } from '../context/NoteContext';
 import Navbar from '../component/navbar';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase-config';
@@ -11,7 +11,7 @@ import '../styles/SingleNote.css';
 const SingleNote = () => {
   const navigate = useNavigate();
   const { noteId } = useParams();
-  const { state, getNotes } = GlobalContext();
+  const { state, getNotes } = NoteContext();
   const { data, loading, err } = state.notes;
 
   const note = data.find((note) => note.id === noteId);

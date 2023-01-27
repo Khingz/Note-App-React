@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../component/navbar';
 import { useParams, Link } from 'react-router-dom';
-import { GlobalContext } from '../context/GlobalContext';
+import { NoteContext } from '../context/NoteContext';
 import Note from '../component/note';
 import Spinner from '../component/Spinner';
 
@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 const CategorySorted = () => {
   // const navigate = useNavigate();
   const { category } = useParams();
-  const { state, categoryColorPicker, getNotes } = GlobalContext();
+  const { state, categoryColorPicker, getNotes } = NoteContext();
   const { data, loading } = state.notes;
   const sortedNotes = data.filter(
     (note) => note.category.toLowerCase() === category.toLowerCase()

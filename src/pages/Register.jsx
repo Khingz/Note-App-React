@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Register.css';
-import { GlobalContext } from '../context/GlobalContext';
+import { NoteContext } from '../context/NoteContext';
 import { useState } from 'react';
 
 const Register = () => {
-  const { signup } = GlobalContext();
+  const { signup } = NoteContext();
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

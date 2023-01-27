@@ -5,13 +5,13 @@ import '../styles/Dashboard.css';
 import { BsPlusCircleFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Navbar from '../component/navbar';
-import { GlobalContext } from '../context/GlobalContext';
+import { NoteContext } from '../context/NoteContext';
 import Spinner from '../component/Spinner';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 const Dashboard = () => {
-  const { state, getNotes, categoryColorPicker } = GlobalContext();
+  const { state, getNotes, categoryColorPicker } = NoteContext();
   const { data, loading, err } = state.notes;
 
   //category count
