@@ -22,8 +22,27 @@
   margin-bottom: 0.5rem;
 }
 
-/* @media screen and (max-width: 1029px) {
+@media screen and (max-width: 1029px) {
   .category__container {
-    width: 9rem;
+    max-width: 10rem;
   }
-} */
+}
+
+@media screen and (max-width: 840px) {
+  .category__container {
+    max-width: 9rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .category__container {
+    max-width: 7.5rem;
+  }
+}
+
+@media screen and (max-width: 342px) {
+  .category__container {
+    max-width: 5.5rem;
+  }
+}
+

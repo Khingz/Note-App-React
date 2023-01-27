@@ -17,7 +17,7 @@ const navbar = () => {
         <div className="nav__username">
           <Link to='/profile'>
             <div className="nav__avatar">A</div>
-            <p className="username">Alan</p>
+            <p className="username">Chuckwuemeka</p>
           </Link>
         </div>
         <button onClick={handleLogout}>Logout</button>

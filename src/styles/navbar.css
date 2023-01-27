@@ -54,3 +54,31 @@
     border-radius: 4px;
     padding: 0.5rem 1rem;
 }
+
+@media screen and (max-width: 500px) {
+    .brand__name a {
+        font-size: 1rem;
+    }
+
+    .brand__name span {
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-left: -0.3rem;
+        color: var(--pink);
+    }
+
+    .nav__avatar {
+        width: 20px;
+        height: 20px;
+       font-size: 0.8rem;
+    }
+
+    .username {
+        font-size: 0.7rem;
+    }
+
+    .nav__user button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.6rem;
+    }
+  }
