@@ -9,6 +9,7 @@ import { NoteContext } from '../context/NoteContext';
 import Spinner from '../component/Spinner';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { responsive } from '../helpers/responsive';
 
 const Dashboard = () => {
   const { state, getNotes, categoryColorPicker } = NoteContext();
@@ -29,6 +30,7 @@ const Dashboard = () => {
   let categoryKey = Object.keys(categoryCount);
   let filteredKey = categoryKey.filter((key) => categoryCount[key] > 0);
 
+  //renders category section
   const renderCat = filteredKey.map((key, index) => {
     return (
       <Link to={`/notes/categories/${key}`} key={index}>
@@ -46,23 +48,6 @@ const Dashboard = () => {
     []
   );
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1050 },
-      items: 3,
-      slidesToSlide: 1, // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1050, min: 767 },
-      items: 2,
-      slidesToSlide: 1, // optional, default to 1.
-    },
-    mobile: {
-      breakpoint: { max: 767, min: 0 },
-      items: 1,
-      slidesToSlide: 1, // optional, default to 1.
-    },
-  };
 
   //render if loading
   if (loading) {

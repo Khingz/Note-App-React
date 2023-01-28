@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/Login.css'
+import { AuthContext } from '../context/AuthContext';
+import '../styles/Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { state } = AuthContext();
+  const {auth} = state
+
+  console.log(auth);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/dashboard')
-  }
+    navigate('/dashboard');
+  };
   return (
     <div className="login__container">
       <h3 className="login__title">Hello, please login to continue</h3>
@@ -34,8 +40,8 @@ const Login = () => {
       </form>
       <div className="login__register">
         <span>
-          Don't have account? 
-          <Link to='/signup'>Register</Link>
+          Don't have account?
+          <Link to="/signup">Register</Link>
         </span>
       </div>
     </div>

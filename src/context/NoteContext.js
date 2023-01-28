@@ -15,8 +15,7 @@ const Context = ({ children }) => {
       loading: true,
       data: [],
       err: {},
-    },
-    user: {},
+    }
   });
 
   //get notes
@@ -32,10 +31,7 @@ const Context = ({ children }) => {
         payload: err || "An error occured please try again",
       });
     }
-  };
-
-  //Signup/Register a new user
-  
+  }; 
 
   //assign color depending on category
   const categoryColorPicker = (category) => {
