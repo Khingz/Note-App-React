@@ -19,10 +19,18 @@
     margin: 0 auto;
 }
 
+.register__err__container {
+    width: 58%;
+    margin-bottom: 0.4rem;
+}
+
 .register__err {
-    color: var(--pink);
-    width: 60%;
+    color: white;
     text-align: center;
+    width: 100%;
+    background-color: var(--pink);
+    padding: 0.3rem;
+    margin: 0 auto;
 }
 
 .register__container form input {

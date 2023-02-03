@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Register.css';
 import { AuthContext } from '../context/AuthContext';
 import { useState } from 'react';
 
 const Register = () => {
+  const navigate = useNavigate()
   const { signUp } = AuthContext();
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
@@ -21,10 +22,11 @@ const Register = () => {
         return false;
       }
       if (password !== password2) {
-        setErr('Password does not match');
+        setErr('Password do not match');
         return false;
       }
       await signUp(email, password);
+      navigate('/signin')
     } catch (err) {
       setErr(err.message);
       console.log(err.message);
@@ -35,8 +37,8 @@ const Register = () => {
       <h3 className="register__title">
         Welcome, please register to get started
       </h3>
-      <div className='register__err'>
-        {err && <p>{err}</p>}
+      <div className='register__err__container'>
+        {err && <p className='register__err'>{err}</p>}
       </div>
       <form onSubmit={handleSubmit}>
         <div className="fullname__container">
