@@ -1,33 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Register.css';
-import { NoteContext } from '../context/NoteContext';
+import { AuthContext } from '../context/AuthContext';
 import { useState } from 'react';
 
 const Register = () => {
-  const { signup } = NoteContext();
+  const { signUp } = AuthContext();
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
+  const [err, setErr] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!fullname || !email || !password || !password2) {
-      console.log('Fill in all fields');
-      return false;
+    setErr('');
+    try {
+      if (!fullname || !email || !password || !password2) {
+        setErr('Fill in all fields');
+        return false;
+      }
+      if (password !== password2) {
+        setErr('Password does not match');
+        return false;
+      }
+      await signUp(email, password);
+    } catch (err) {
+      setErr(err.message);
+      console.log(err.message);
     }
-    if (password !== password2) {
-      console.log('Password does not match');
-      return false;
-    }
-    signup(fullname, email, password);
   };
   return (
     <div className="register__container">
       <h3 className="register__title">
         Welcome, please register to get started
       </h3>
+      <div className='register__err'>
+        {err && <p>{err}</p>}
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="fullname__container">
           <label htmlFor="fullname">Fullname</label>

@@ -15,8 +15,14 @@
 }
 
 .register__container form {
-    width: 30%;
+    width: 60%;
     margin: 0 auto;
+}
+
+.register__err {
+    color: var(--pink);
+    width: 60%;
+    text-align: center;
 }
 
 .register__container form input {

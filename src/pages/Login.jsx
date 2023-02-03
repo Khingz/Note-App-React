@@ -1,14 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
 import '../styles/Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { state } = AuthContext();
-  const {auth} = state
 
-  console.log(auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
