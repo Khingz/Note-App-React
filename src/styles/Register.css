@@ -31,6 +31,7 @@
     background-color: var(--pink);
     padding: 0.3rem;
     margin: 0 auto;
+    border-radius: 5px;
 }
 
 .register__container form input {

@@ -30,7 +30,8 @@ const UserContext = ({ children }) => {
     return () => {
       unsubscribe()
     }
-  });
+  }, []);
+
   return <Auth.Provider value={{user, signIn, signUp, signOut}}>{children}</Auth.Provider>;
 };
 
