@@ -25,7 +25,7 @@ const Register = () => {
         setErr('Password do not match');
         return false;
       }
-      await signUp(email, password);
+      await signUp(email, password, fullname);
       navigate('/signin')
     } catch (err) {
       setErr(err.message);
