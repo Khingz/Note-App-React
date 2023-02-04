@@ -3,9 +3,15 @@ import homeImg from "../assets/backgrounds/landing-bgg.png";
 import "../styles/Home.css";
 import { TfiLayoutLineSolid } from "react-icons/tfi";
 import { AiOutlineSwapRight } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Home = () => {
+  const user = true
+
+  if (user) {
+    return <Navigate to='/dashboard' />
+  }
+
   return (
     <div className="home__container">
       <div className="home__left">
