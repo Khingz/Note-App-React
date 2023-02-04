@@ -15,13 +15,14 @@
 }
 
 .register__container form {
-    width: 60%;
+    width: 40%;
     margin: 0 auto;
 }
 
 .register__err__container {
-    width: 58%;
+    width: 40%;
     margin-bottom: 0.4rem;
+    overflow: hidden;
 }
 
 .register__err {
@@ -31,7 +32,6 @@
     background-color: var(--pink);
     padding: 0.3rem;
     margin: 0 auto;
-    border-radius: 5px;
 }
 
 .register__container form input {

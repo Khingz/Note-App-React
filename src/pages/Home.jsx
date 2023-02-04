@@ -6,11 +6,11 @@ import { AiOutlineSwapRight } from "react-icons/ai";
 import { Link, Navigate } from "react-router-dom";
 
 const Home = () => {
-  const user = true
+  // const user = true
 
-  if (user) {
-    return <Navigate to='/dashboard' />
-  }
+  // if (user) {
+  //   return <Navigate to='/dashboard' />
+  // }
 
   return (
     <div className="home__container">
