@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc  } from "firebase/firestore";
 
 
 import {
@@ -14,14 +14,15 @@ export const Auth = createContext();
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState(null)
-  const [userInfo, setUserInfo] = useState({})
+  const [userInfo, setUserInfo] = useState(null)
 
   //Sign Up function
   const signUp = async (email, password, fullname) => {
     createUserWithEmailAndPassword(auth, email, password)
     .then(async (result) => {
       const ref = doc(db, 'users', result.user.uid)
-      const docRef = await setDoc(ref, {fullname, email})
+      // const docRef = await setDoc(ref, {fullname, email, id: result.user.uid})
+      await setDoc(ref, {fullname, email})
       .then((us) => {
         console.log('Registerwd successfully')
       })
@@ -36,7 +37,15 @@ const UserContext = ({ children }) => {
 
   //Sign In function
   const signIn = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password)
+    .then(async (result) => {
+      const docRef = doc(db, 'users', result.user.uid)
+      const docSnap = await getDoc(docRef) 
+      if(docSnap.exists()) {
+        const data = docSnap.data();
+        setUserInfo(data);
+      }
+    })
   };
 
   //SignOut function

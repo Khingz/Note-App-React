@@ -5,7 +5,6 @@ import { AuthContext } from '../context/AuthContext';
 
 const navbar = () => {
   const { logOut, user, userInfo } = AuthContext();
-  console.log(user);
 
   const handleLogout = async () => {
     try{
@@ -25,8 +24,8 @@ const navbar = () => {
       <div className="nav__user">
         <div className="nav__username">
           <Link to="/profile">
-            <div className="nav__avatar">{user.email[0].toUpperCase()}</div>
-            <p className="username">{user.email}</p>
+            <div className="nav__avatar">{userInfo.fullname[0].toUpperCase()}</div>
+            <p className="username">{userInfo.fullname.split(" ")[0]}</p>
           </Link>
         </div>
         <button onClick={handleLogout}>Logout</button>

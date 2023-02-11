@@ -6,6 +6,7 @@ import { BsPlusCircleFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Navbar from '../component/navbar';
 import { NoteContext } from '../context/NoteContext';
+import { AuthContext } from '../context/AuthContext';
 import Spinner from '../component/Spinner';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -13,7 +14,9 @@ import { responsive } from '../helpers/responsive';
 
 const Dashboard = () => {
   const { state, getNotes, categoryColorPicker } = NoteContext();
+  const { user, userInfo } = AuthContext()
   const { data, loading, err } = state.notes;
+  
 
   //category count
   let categoryCount = {
@@ -61,18 +64,6 @@ const Dashboard = () => {
     );
   }
 
-  //render if error
-  if (Object.keys(err).length > 0) {
-    return (
-      <div className="dashboard__main">
-        <Navbar />
-        <div className="dashboard__container">
-          <h3>Something went wrong, please try again...</h3>
-        </div>
-      </div>
-    );
-  }
-
   //render page if no error and not laoding
   return (
     <div className="dashboard__main">
@@ -84,7 +75,7 @@ const Dashboard = () => {
           </Link>
         </div>
         <p className="dashboard__user">
-          Hello Alan, <span>Welcome</span>
+          Hello {userInfo.fullname.split(" ")[0]}, <span>Welcome</span>
         </p>
         <hr />
         <div className="dashboard__category">

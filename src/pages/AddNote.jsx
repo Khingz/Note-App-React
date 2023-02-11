@@ -5,10 +5,12 @@ import '../styles/AddNote.css';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase-config';
 import { NoteContext } from '../context/NoteContext';
+import { AuthContext } from '../context/AuthContext';
 
 const AddNote = () => {
   const navigate = useNavigate();
   const { getNotes } = NoteContext();
+  const { user } = AuthContext();
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
   const [category, setCategory] = useState('personal');
@@ -30,6 +32,7 @@ const AddNote = () => {
       title,
       message,
       category,
+      id: user.uid
     };
     await addDoc(notesCollectionRef, data);
   };
