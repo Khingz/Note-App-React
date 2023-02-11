@@ -44,6 +44,8 @@ const UserContext = ({ children }) => {
       if(docSnap.exists()) {
         const data = docSnap.data();
         setUserInfo(data);
+      } else {
+        console.log('no data');
       }
     })
   };

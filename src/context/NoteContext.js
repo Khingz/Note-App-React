@@ -3,6 +3,7 @@ import { reducer } from "./Reducers";
 import { db } from "../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { NOTE_ERROR, NOTE_SUCCESS } from "./actionTypes";
+import { AuthContext } from "./AuthContext";
 
 export const Notes = createContext();
 
@@ -10,6 +11,7 @@ export const Notes = createContext();
 const notesCollectionRef = collection(db, "notes");
 
 const Context = ({ children }) => {
+  const {user} = AuthContext()
   const [state, dispatch] = useReducer(reducer, {
     notes: {
       loading: true,
