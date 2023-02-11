@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import Category from '../component/category';
 import Note from '../component/note';
 import '../styles/Dashboard.css';
@@ -13,9 +13,10 @@ import 'react-multi-carousel/lib/styles.css';
 import { responsive } from '../helpers/responsive';
 
 const Dashboard = () => {
-  const { state, getNotes, categoryColorPicker } = NoteContext();
+  const { notes, getNotes, categoryColorPicker } = NoteContext();
   const { user, userInfo } = AuthContext()
-  const { data, loading, err } = state.notes;
+  const [loading, setLoading] = useState(true)
+  // const { data, loading, err } = state.notes;
   
 
   //category count
@@ -26,7 +27,7 @@ const Dashboard = () => {
     education: 0,
   };
 
-  data.map((note) => {
+  notes.map((note) => {
     return categoryCount[note.category]++;
   });
 
@@ -46,6 +47,7 @@ const Dashboard = () => {
   useEffect(
     () => {
       getNotes();
+      setLoading(false)
     },
     // eslint-disable-next-line
     []
@@ -79,7 +81,7 @@ const Dashboard = () => {
         </p>
         <hr />
         <div className="dashboard__category">
-          {data.length === 0 ? null : (
+          {notes.length === 0 ? null : (
             <>
               <h4>Categories</h4>
               <div className="dashboard__category__items">
@@ -98,13 +100,13 @@ const Dashboard = () => {
         <div className="dashboard__notes">
           <h4>Your Notes</h4>
           <div className="dashboard__note__items">
-            {data.length === 0 ? (
+            {notes.length === 0 ? (
               <p className="">
                 You do not have any note at the moment, please click the + sign
                 at the bottom right to add a note
               </p>
             ) : (
-              data.map((note) => {
+              notes.map((note) => {
                 return (
                   <Link to={`/notes/${note.id}`} key={note.id}>
                     <Note

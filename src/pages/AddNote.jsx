@@ -32,7 +32,7 @@ const AddNote = () => {
       title,
       message,
       category,
-      id: user.uid
+      userId: user.uid
     };
     await addDoc(notesCollectionRef, data);
   };
