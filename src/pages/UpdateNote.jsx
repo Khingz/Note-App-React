@@ -10,10 +10,9 @@ import { db } from '../firebase-config';
 const UpdateNote = () => {
   const navigate = useNavigate();
   const { noteId } = useParams();
-  const { state, getNotes } = NoteContext();
-  const { data, loading } = state.notes;
+  const { notes, getNotes } = NoteContext();
 
-  const note = data.find((note) => note.id === noteId);
+  const note = notes.find((note) => note.id === noteId);
 
   const [title, setTitle] = useState(note.title);
   const [message, setMessage] = useState(note.message);
@@ -47,18 +46,6 @@ const UpdateNote = () => {
     // eslint-disable-next-line
     []
   );
-
-  //render if loading
-  if (loading) {
-    return (
-      <div className="dashboard__main">
-        <Navbar />
-        <div className="dashboard__container">
-          <h3>Loading...</h3>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="update__note__main">
