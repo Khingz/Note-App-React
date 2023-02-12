@@ -11,7 +11,9 @@ import '../styles/SingleNote.css';
 const SingleNote = () => {
   const navigate = useNavigate();
   const { noteId } = useParams();
-  const { notes, getNotes } = NoteContext();
+  const { notes, getNotes, loading } = NoteContext();
+  
+  console.log(notes)
 
   const note = notes.find((note) => note.id === noteId);
 
@@ -30,7 +32,21 @@ const SingleNote = () => {
     []
   );
 
-
+    //render if loading
+    if (loading) {
+      return (
+        <div className="dashboard__main">
+          <Navbar />
+          <div className="dashboard__spinner">
+            <Spinner />
+          </div>
+        </div>
+      );
+    }
+ 
+  if(!note) {
+    return false
+  }
   return (
     <div>
       <Navbar />

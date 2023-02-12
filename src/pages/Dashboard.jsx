@@ -14,7 +14,7 @@ import { responsive } from '../helpers/responsive';
 
 const Dashboard = () => {
   const { notes, getNotes, categoryColorPicker } = NoteContext();
-  const { user, userInfo } = AuthContext()
+  const { userInfo } = AuthContext()
   const [loading, setLoading] = useState(true)
   // const { data, loading, err } = state.notes;
   

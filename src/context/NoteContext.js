@@ -1,14 +1,13 @@
-import React, { createContext, useContext, useReducer, useState } from "react";
-import { reducer } from "./Reducers";
+import React, { createContext, useContext, useState } from "react";
+// import { reducer } from "./Reducers";
 import { db } from "../firebase-config";
 import {
   collection,
-  getDocs,
+  // getDocs,
   onSnapshot,
   query,
   where,
 } from "firebase/firestore";
-import { NOTE_ERROR, NOTE_SUCCESS } from "./actionTypes";
 import { AuthContext } from "./AuthContext";
 
 export const Notes = createContext();
@@ -19,6 +18,7 @@ const notesCollectionRef = collection(db, "notes");
 const Context = ({ children }) => {
   const { user } = AuthContext();
   const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true)
   // const [state, dispatch] = useReducer(reducer, {
   //   notes: {
   //     loading: true,
@@ -48,9 +48,11 @@ const Context = ({ children }) => {
     const unsub = onSnapshot(q, (query) => {
       const items = [];
       query.forEach((doc) => {
-        items.push({...doc.data()});
+        console.log(doc);
+        items.push({...doc.data(), id: doc.id});
       });
       setNotes(items);
+      setLoading(false)
     });
     return () => {
       unsub();
@@ -73,7 +75,7 @@ const Context = ({ children }) => {
   };
 
   return (
-    <Notes.Provider value={{ notes, getNotes, categoryColorPicker }}>
+    <Notes.Provider value={{ notes, loading, getNotes, categoryColorPicker }}>
       {children}
     </Notes.Provider>
   );

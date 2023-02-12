@@ -4,7 +4,7 @@ import '../styles/navbar.css';
 import { AuthContext } from '../context/AuthContext';
 
 const navbar = () => {
-  const { logOut, user, userInfo } = AuthContext();
+  const { logOut, userInfo } = AuthContext();
 
   const handleLogout = async () => {
     try{
