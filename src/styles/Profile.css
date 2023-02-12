@@ -1,20 +1,32 @@
 .profile__container {
-    text-align: center;
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
-    align-items: center;
+    text-align: center;
+}
+
+.user__profile__avatar {
+    margin-top: 3rem;
 }
 
 .profile__avatar {
-    font-size: 10rem;
-    background: var(--cyan);
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
-    width: 13rem;
-    height: 13rem;
-    text-align: center;
-    color: var(--white);
+    background-color: var(--cyan);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    color: var(--white);
+}
+
+.profile__avatar p {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.user__profile__name {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
