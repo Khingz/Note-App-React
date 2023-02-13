@@ -53,7 +53,10 @@ const Profile = () => {
             </ul>
           </div>
           <div className="profile__buttons">
-            <Link to="/update-profile">Edit Profile</Link>
+            <Link to={`/profile/update-profile/${user.uid}`}>
+              {' '}
+              Edit Profile
+            </Link>
             <button>Delete Account</button>
           </div>
         </div>

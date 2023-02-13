@@ -10,7 +10,7 @@ import UpdateNote from './pages/UpdateNote';
 import ScrollToTop from './helpers/scrollToTop';
 import CategorySorted from './pages/CategorySorted';
 import ProtectedRoutes from './component/ProtectedRoutes';
-
+import UpdateProfile from './pages/UpdateProfile';
 import './App.css';
 
 function App() {
@@ -67,6 +67,14 @@ function App() {
             element={
               <ProtectedRoutes>
                 <CategorySorted />{' '}
+              </ProtectedRoutes>
+            }
+          />
+           <Route
+            path="/profile/update-profile/:user"
+            element={
+              <ProtectedRoutes>
+                <UpdateProfile />{' '}
               </ProtectedRoutes>
             }
           />
