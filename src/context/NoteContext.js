@@ -1,9 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
-// import { reducer } from "./Reducers";
 import { db } from "../firebase-config";
 import {
   collection,
-  // getDocs,
   onSnapshot,
   query,
   where,

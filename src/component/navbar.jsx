@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 import { AuthContext } from '../context/AuthContext';
 
 const Navbar = () => {
-  const { logOut, userInfo, user, getUserInfo } = AuthContext();
+  const { logOut, userInfo, user } = AuthContext();
   // const [loading, setLoading] = useState(true);
 
   console.log(user)
@@ -17,7 +17,7 @@ const Navbar = () => {
       console.log(err)
     }
   };
-  
+
   if (!userInfo) {
     return false
   }

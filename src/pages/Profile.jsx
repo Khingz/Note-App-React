@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../component/navbar';
 import '../styles/Profile.css';
 import { AuthContext } from '../context/AuthContext';
@@ -8,12 +8,13 @@ import { Link } from 'react-router-dom';
 const Profile = () => {
   const { userInfo, user, getUserInfo } = AuthContext();
   const { notes } = NoteContext();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getUserInfo(user.uid);
-    setLoading(false);
-  }, []);
+  }, 
+    // eslint-disable-next-line
+  []);
 
   if (!userInfo) {
     return false;

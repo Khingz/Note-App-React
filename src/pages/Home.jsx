@@ -3,7 +3,7 @@ import homeImg from "../assets/backgrounds/landing-bgg.png";
 import "../styles/Home.css";
 import { TfiLayoutLineSolid } from "react-icons/tfi";
 import { AiOutlineSwapRight } from "react-icons/ai";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   // const user = true
