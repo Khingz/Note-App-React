@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import Navbar from '../component/navbar';
+import '../styles/UpdateProfile.css';
+
+
+import '../styles/Profile.css';
+
 
 const UpdateProfile = () => {
   const { userInfo } = AuthContext();

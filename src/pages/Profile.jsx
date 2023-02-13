@@ -22,7 +22,7 @@ const Profile = () => {
     return false;
   }
   return (
-    <div className="container__main">
+    <div className="profile__main">
       <Navbar />
       <div className="profile__container">
         <div className="user__profile__avatar">
