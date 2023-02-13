@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../component/navbar';
 import '../styles/Profile.css';
 import { AuthContext } from '../context/AuthContext';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
-  const { userInfo, user } = AuthContext();
+  const { userInfo, user, getUserInfo } = AuthContext();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getUserInfo(user.uid);
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return false;
+  }
+  if (!userInfo) {
+    return false;
+  }
   return (
     <div className="container__main">
       <Navbar />
@@ -22,8 +35,8 @@ const Profile = () => {
             </ul>
           </div>
           <div className="profile__buttons">
-            <Link to='/'>Home</Link>
-            <Link to='/update-profile'>Update Profile</Link>
+            <Link to="/">Home</Link>
+            <Link to="/update-profile">Update Profile</Link>
           </div>
         </div>
       </div>

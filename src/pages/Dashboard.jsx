@@ -14,7 +14,7 @@ import { responsive } from '../helpers/responsive';
 
 const Dashboard = () => {
   const { notes, getNotes, categoryColorPicker } = NoteContext();
-  const { userInfo } = AuthContext()
+  const { userInfo, getUserInfo, user } = AuthContext()
   const [loading, setLoading] = useState(true)
   // const { data, loading, err } = state.notes;
   
@@ -46,6 +46,7 @@ const Dashboard = () => {
   //Use effect on initial page load to get nootes
   useEffect(
     () => {
+      getUserInfo(user.uid);
       getNotes();
       setLoading(false)
     },
@@ -64,6 +65,10 @@ const Dashboard = () => {
         </div>
       </div>
     );
+  }
+
+  if (!userInfo) {
+    return false
   }
 
   //render page if no error and not laoding

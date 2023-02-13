@@ -15,6 +15,7 @@ export const Auth = createContext();
 const UserContext = ({ children }) => {
   const [user, setUser] = useState(null)
   const [userInfo, setUserInfo] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   //Sign Up function
   const signUp = async (email, password, fullname) => {
@@ -39,7 +40,13 @@ const UserContext = ({ children }) => {
   const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password)
     .then(async (result) => {
-      const docRef = doc(db, 'users', result.user.uid)
+      await getUserInfo(result.user.uid)
+    })
+  };
+
+  //get user info
+  const getUserInfo = async (userId) => {
+      const docRef = doc(db, 'users', userId)
       const docSnap = await getDoc(docRef) 
       if(docSnap.exists()) {
         const data = docSnap.data();
@@ -47,8 +54,7 @@ const UserContext = ({ children }) => {
       } else {
         console.log('no data');
       }
-    })
-  };
+  }
 
   //SignOut function
   const logOut = () => {
@@ -59,13 +65,14 @@ const UserContext = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser)
+      setIsLoading(false)
     })
     return () => {
       unsubscribe()
     }
   }, []);
 
-  return <Auth.Provider value={{user, userInfo, signIn, signUp, logOut}}>{children}</Auth.Provider>;
+  return <Auth.Provider value={{user, userInfo, signIn, signUp, logOut, getUserInfo}}>{children}</Auth.Provider>;
 };
 
 export default UserContext;

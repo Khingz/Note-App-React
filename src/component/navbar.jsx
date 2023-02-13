@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 import { AuthContext } from '../context/AuthContext';
 
-const navbar = () => {
-  const { logOut, userInfo } = AuthContext();
+const Navbar = () => {
+  const { logOut, userInfo, user, getUserInfo } = AuthContext();
+  const [loading, setLoading] = useState(true);
+
+  console.log(user)
 
   const handleLogout = async () => {
     try{
@@ -14,6 +17,20 @@ const navbar = () => {
       console.log(err)
     }
   };
+
+  useEffect(() => {
+    getUserInfo(user.uid)
+    setLoading(false);
+  }, [])
+
+  if(loading) {
+    return false;
+  }
+
+  if (!userInfo) {
+    return false
+  }
+
   return (
     <div className="navbar__container">
       <div className="brand__name">
@@ -34,4 +51,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default Navbar;
