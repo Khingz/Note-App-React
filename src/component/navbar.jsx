@@ -21,7 +21,7 @@ const Navbar = () => {
   useEffect(() => {
     getUserInfo(user.uid)
     setLoading(false);
-  }, [])
+  }, [user])
 
   if(loading) {
     return false;
