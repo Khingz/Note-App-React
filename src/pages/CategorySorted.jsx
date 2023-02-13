@@ -2,29 +2,33 @@ import React from 'react';
 import Navbar from '../component/navbar';
 import { useParams, Link } from 'react-router-dom';
 import { NoteContext } from '../context/NoteContext';
+import { AuthContext } from '../context/AuthContext';
 import Note from '../component/note';
 import Spinner from '../component/Spinner';
 
 import '../styles/CategorySorted.css';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 const CategorySorted = () => {
   // const navigate = useNavigate();
+  const [loading, setIsloading] =useState(true)
   const { category } = useParams();
-  const { state, categoryColorPicker, getNotes } = NoteContext();
-  const { data, loading } = state.notes;
-  const sortedNotes = data.filter(
+  const { notes, categoryColorPicker, getNotes } = NoteContext();
+  const { getUserInfo, user } = AuthContext()
+  const sortedNotes = notes.filter(
     (note) => note.category.toLowerCase() === category.toLowerCase()
   );
 
   useEffect(
     () => {
+      getUserInfo(user.uid)
       getNotes();
+      setIsloading(false)
     },
     // eslint-disable-next-line
     []
   );
-  console.log(data);
 
   //render if loading
   if (loading) {
@@ -40,7 +44,6 @@ const CategorySorted = () => {
   return (
     <div className="category__sorted__container">
       <Navbar />
-
       <div className="sorted__cat__container">
         <div className="sorted__home">
           <Link to="/dashboard">Home</Link>

@@ -46,7 +46,7 @@ const Dashboard = () => {
   //Use effect on initial page load to get nootes
   useEffect(
     () => {
-      getUserInfo(user.uid);
+      // getUserInfo(user.uid);
       getNotes();
       setLoading(false)
     },

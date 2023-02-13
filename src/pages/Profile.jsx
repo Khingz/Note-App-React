@@ -15,9 +15,6 @@ const Profile = () => {
     setLoading(false);
   }, []);
 
-  if (loading) {
-    return false;
-  }
   if (!userInfo) {
     return false;
   }

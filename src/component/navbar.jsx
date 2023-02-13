@@ -5,28 +5,19 @@ import { AuthContext } from '../context/AuthContext';
 
 const Navbar = () => {
   const { logOut, userInfo, user, getUserInfo } = AuthContext();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   console.log(user)
 
   const handleLogout = async () => {
     try{
-      logOut();
+      await logOut();
       window.location.pathname = '/signin';
     }catch(err) {
       console.log(err)
     }
   };
-
-  useEffect(() => {
-    getUserInfo(user.uid)
-    setLoading(false);
-  }, [user])
-
-  if(loading) {
-    return false;
-  }
-
+  
   if (!userInfo) {
     return false
   }
